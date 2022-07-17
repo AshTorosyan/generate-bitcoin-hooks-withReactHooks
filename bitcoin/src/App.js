@@ -10,7 +10,7 @@ function App() {
 
 const [bpi,setBpi] = useState({});
 const [isFetched,setIsFetched] = useState(false)
-const handdleBpi = () => {
+const handleBpi = () => {
   fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
   .then(data => data.json())
   .then(bpiRes => {
@@ -26,7 +26,7 @@ const handdleBpi = () => {
 
   return (
     <div>
-       <Button className={classes.button} onClick={handdleBpi} >click me</Button>
+       <Button className={classes.button} onClick={handleBpi} >click me</Button>
        <List className={classes.list}>
         {
          isFetched && <ListItem className={classes.listItem}>
@@ -43,7 +43,7 @@ const handdleBpi = () => {
             <Text>rate: {bpi.GBP.rate}</Text>
             <Text>rate_float: {bpi.GBP.rate_float}</Text>
             <Text>description: {bpi.GBP.description}</Text>
-            <Text>symbol: "{bpi.EUR.symbol}"</Text>
+            <Text>symbol: "{bpi.GBP.symbol}"</Text>
           </ListItem>
          }
          {
@@ -52,7 +52,7 @@ const handdleBpi = () => {
           <Text>rate: {bpi.USD.rate}</Text>
           <Text>rate_float: {bpi.USD.rate_float}</Text>
           <Text>description: {bpi.USD.description}</Text>
-          <Text>symbol: "{bpi.EUR.symbol}"</Text>
+          <Text>symbol: "{bpi.USD.symbol}"</Text>
           </ListItem>
          } 
        </List>
